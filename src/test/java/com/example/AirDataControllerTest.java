@@ -33,28 +33,45 @@ public class AirDataControllerTest extends TestCase {
     private AirDataController airDataController;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
     }
 
     @Test
     public void airData() {
-        List<GeoData> geoDataList = new ArrayList<>();
-        GeoData geoData = new GeoData("1001A", 371 , 116.366F, 39.8673F);
-        geoDataList.add(geoData);
+        List<HeatmapData> heatmapDataList = new ArrayList<>();
+        HeatmapData heatmapData = new HeatmapData("1001A", 371, 116.366F, 39.8673F);
+        heatmapDataList.add(heatmapData);
 
         when(airDataService.findAirData(anyString(), anyString()))
-                .thenReturn(geoDataList);
+                .thenReturn(heatmapDataList);
 
-        List<GeoData> actual = airDataController.airData("AQI", "2017012722");
+        List<HeatmapData> actual = airDataController.airData("AQI", "2017012722");
 
         verify(airDataService, times(1))
                 .findAirData("2017012722", "AQI");
 
-        assertThat(actual, is(geoDataList));
+        assertThat(actual, is(heatmapDataList));
+    }
+
+    @Test
+    public void airData2() {
+        List<HeatmapData> heatmapDataList = new ArrayList<>();
+        HeatmapData heatmapData = new HeatmapData("1001A", 371, 116.366F, 39.8673F);
+        heatmapDataList.add(heatmapData);
+
+        when(airDataService.findAirData(anyString(), anyString()))
+                .thenReturn(heatmapDataList);
+
+        List<HeatmapData> actual = airDataController.airData("PM2.5", "2017012723");
+
+        verify(airDataService, times(1))
+                .findAirData("2017012723", "PM2.5");
+
+        assertThat(actual, is(heatmapDataList));
     }
 }

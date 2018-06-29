@@ -1,16 +1,15 @@
 package com.example;
 
-public class GeoData {
+public class HeatmapData {
 
     private String code;
     private int value;
     private float lat;
     private float lng;
 
-    GeoData(String code, int value, float lat, float lng) {
+    HeatmapData(String code, int value, float lat, float lng) {
         this.code = code;
         this.value = value;
-
         this.lat = lat;
         this.lng = lng;
     }
