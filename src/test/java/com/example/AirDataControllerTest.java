@@ -44,7 +44,9 @@ public class AirDataControllerTest extends TestCase {
     @Test
     public void airData() {
         List<HeatmapData> heatmapDataList = new ArrayList<>();
-        HeatmapData heatmapData = new HeatmapData("1001A", 371, 116.366F, 39.8673F);
+
+        Location location = new Location(39.8673F, 116.366F);
+        HeatmapData heatmapData = new HeatmapData("1001A", 371, location);
         heatmapDataList.add(heatmapData);
 
         when(airDataService.findAirData(anyString(), anyString()))
@@ -61,7 +63,9 @@ public class AirDataControllerTest extends TestCase {
     @Test
     public void airData2() {
         List<HeatmapData> heatmapDataList = new ArrayList<>();
-        HeatmapData heatmapData = new HeatmapData("1001A", 371, 116.366F, 39.8673F);
+
+        Location location = new Location(39.8673F, 116.366F);
+        HeatmapData heatmapData = new HeatmapData("1001A", 371, location);
         heatmapDataList.add(heatmapData);
 
         when(airDataService.findAirData(anyString(), anyString()))

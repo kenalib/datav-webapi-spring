@@ -20,16 +20,6 @@ class AirDataService {
     private HashMap<String, Site> sites = new HashMap<>();
     private HashMap<String, Location> locations = new HashMap<>();
 
-    @PostConstruct
-    void init() {
-        String filename = "classpath:csv/site_list.csv";
-        Resource resource = resourceLoader.getResource(filename);
-        SiteParser parser = new SiteParser(resource);
-
-        sites = parser.getSites();
-        locations = parser.getLocations();
-    }
-
     HashMap<String, Site> getSites() {
         return sites;
     }
@@ -40,6 +30,16 @@ class AirDataService {
 
     Location getLocation(String code) {
         return locations.get(code);
+    }
+
+    @PostConstruct
+    void init() {
+        String filename = "classpath:csv/site_list.csv";
+        Resource resource = resourceLoader.getResource(filename);
+        SiteParser parser = new SiteParser(resource);
+
+        sites = parser.getSites();
+        locations = parser.getLocations();
     }
 
     List<HeatmapData> findAirData(String dateHour, String type) {

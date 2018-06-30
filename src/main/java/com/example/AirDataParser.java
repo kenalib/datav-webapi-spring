@@ -78,8 +78,8 @@ class AirDataParser {
         List<HeatmapData> heatmapDataList = new ArrayList<>();
 
         for (String code : siteColNum.keySet()) {
-            Location loc = locations.get(code);
-            if (loc == null) continue;
+            Location location = locations.get(code);
+            if (location == null) continue;
 
             Integer index = siteColNum.get(code);
             if (index == null) continue;
@@ -88,7 +88,7 @@ class AirDataParser {
             if (rawData.equals("")) continue;
 
             int value = Integer.parseInt(rawData);
-            HeatmapData heatmapData = new HeatmapData(code, value, loc.getLat(), loc.getLng());
+            HeatmapData heatmapData = new HeatmapData(code, value, location);
             heatmapDataList.add(heatmapData);
         }
 

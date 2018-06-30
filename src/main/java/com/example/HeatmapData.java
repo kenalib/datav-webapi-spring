@@ -4,14 +4,12 @@ public class HeatmapData {
 
     private String code;
     private int value;
-    private float lat;
-    private float lng;
+    private Location location;
 
-    HeatmapData(String code, int value, float lat, float lng) {
+    HeatmapData(String code, int value, Location location) {
         this.code = code;
         this.value = value;
-        this.lat = lat;
-        this.lng = lng;
+        this.location = location;
     }
 
     public String getCode() {
@@ -23,10 +21,10 @@ public class HeatmapData {
     }
 
     public float getLat() {
-        return lat;
+        return location.getLat();
     }
 
     public float getLng() {
-        return lng;
+        return location.getLng();
     }
 }
