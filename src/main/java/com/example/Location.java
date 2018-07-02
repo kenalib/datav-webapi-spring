@@ -10,6 +10,11 @@ class Location {
         this.lng = lng;
     }
 
+    Location(String latStr, String lngStr) {
+        this.lat = Float.parseFloat(latStr);
+        this.lng = Float.parseFloat(lngStr);
+    }
+
     float getLat() {
         return lat;
     }

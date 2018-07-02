@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Frying Routes Generator</title>
+</head>
+<body>
+
+<h1>Frying Routes Generator</h1>
+
+
+<form method="post" action="/flying-routes/japan">
+
+<textarea name="route-csv" cols="30" rows="10">
+東京,大阪
+東京,福岡
+</textarea>
+
+<input type="submit">
+
+</form>
+
+
+<h3>Example</h3>
+
+Put city names in CSV format and Submit.<br>
+(Japanese prefectures and major cities only.)
+
+<pre style="border: solid 1px lightgray; width:300px;">
+StartCityName,EndCityName
+StartCityName,EndCityName
+StartCityName,EndCityName
+...
+</pre>
+
+
+</body>
+</html>

@@ -1,25 +1,15 @@
 
-# DataV Quick Start
-
-This doc follows DataV Quick Start document.
-
-* https://jp.alibabacloud.com/help/doc-detail/59606.htm
+# DataV Tools
 
 
-## Download data
+## Heat Map
 
-* http://beijingair.sinaapp.com/
+[Heat Map README](./README-heat-map.md)
 
-To make it quick, we download only one day data.
 
-### one day data
+## Flying Routes
 
-* http://beijingair.sinaapp.com/data/china/sites/20170127/csv
-
-### site list data
-
-* http://beijingair.sinaapp.com/ => National Air Quality Data Baidu SkyDrive Download
-* download 站点列表(含经纬度)-新-1497个.csv as `site_list.csv`
+[Flying Routes README](./README-flying-routes.md)
 
 
 ## Test and Run
@@ -28,6 +18,7 @@ To make it quick, we download only one day data.
 mvn test
 mvn spring-boot:run
 open http://localhost:8080/air-data/aqi?date=2017012722
+open http://localhost:8080/flying-routes/japan
 ```
 
 ## Run from DockerHub
@@ -46,6 +37,7 @@ docker push kenali/datav-quick-start:latest
 ```bash
 docker run -p 80:8080 -t kenali/datav-quick-start
 open http://localhost/air-data/aqi?date=2017012722
+open http://localhost/flying-routes.html
 ```
 
 ## Reference
