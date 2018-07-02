@@ -43,3 +43,4 @@ open http://localhost/flying-routes.html
 ## Reference
 
 * https://spring.io/guides/gs/rest-service/
+* https://github.com/kenalib/datav-webapi-spring
