@@ -20,6 +20,7 @@ class FlyingRoutesService {
     private ResourceLoader resourceLoader;
 
     private HashMap<String, Location> cities = new HashMap<>();
+    private List<RouteData> routes = new ArrayList<>();
 
     @PostConstruct
     void init() {
@@ -33,18 +34,15 @@ class FlyingRoutesService {
     }
 
     List<RouteData> findFlyingRoutes() {
-        return getMockData();
+        return routes;
     }
 
-    private List<RouteData> getMockData() {
-        String mockRoutes = "東京,大阪\n東京,福岡\n";
-        return findFlyingRoutes(mockRoutes);
-    }
+    List<RouteData> findFlyingRoutes(String routeCsv, String mode) {
+        LOGGER.info("findFlyingRoutes... " + mode);
 
-    List<RouteData> findFlyingRoutes(String routeCsv) {
-        LOGGER.info("findFlyingRoutes...");
-
-        List<RouteData> routes = new ArrayList<>();
+        if (mode != null && !mode.equals("append")) {
+            routes = new ArrayList<>();
+        }
 
         for (String row: routeCsv.split("[\r\n]+")) {
             if (row == null) continue;

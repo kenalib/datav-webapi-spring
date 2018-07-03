@@ -22,8 +22,10 @@ public class FlyingRoutesController {
 
     @CrossOrigin("*")
     @PostMapping("/japan")
-    List<RouteData> postJapan(@RequestParam(value="route-csv") String routeCsv) {
-        return service.findFlyingRoutes(routeCsv);
+    List<RouteData> postJapan(
+            @RequestParam(value="route-csv") String routeCsv,
+            @RequestParam(value="mode") String mode) {
+        return service.findFlyingRoutes(routeCsv, mode);
     }
 
 }

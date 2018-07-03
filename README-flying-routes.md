@@ -23,8 +23,8 @@ Copy the Geojson (in below) and paste it to the Static Data.
 
 Frying Routes Generator
 
-* http://localhost:8080/flying-routes.html
-
+* Update routes: http://localhost:8080/flying-routes.html
+* Retrieve json: http://localhost:8080/flying-routes/japan
 
 ## Reference
 

@@ -18,6 +18,7 @@
 mvn test
 mvn spring-boot:run
 open http://localhost:8080/air-data/aqi?date=2017012722
+open http://localhost:8080/flying-routes.html
 open http://localhost:8080/flying-routes/japan
 ```
 
@@ -35,7 +36,7 @@ docker push kenali/datav-quick-start:latest
 ```
 
 ```bash
-docker run -p 80:8080 -t kenali/datav-quick-start
+docker run --name=datav-quick-start -d -p 80:8080 -t kenali/datav-quick-start
 open http://localhost/air-data/aqi?date=2017012722
 open http://localhost/flying-routes.html
 ```
