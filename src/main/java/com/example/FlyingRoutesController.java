@@ -25,7 +25,7 @@ public class FlyingRoutesController {
     List<RouteData> postJapan(
             @RequestParam(value="route-csv") String routeCsv,
             @RequestParam(value="mode") String mode) {
-        return service.findFlyingRoutes(routeCsv, mode);
+        return service.saveFlyingRoutes(routeCsv, mode);
     }
 
 }

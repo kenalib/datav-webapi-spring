@@ -41,6 +41,14 @@ open http://localhost/air-data/aqi?date=2017012722
 open http://localhost/flying-routes.html
 ```
 
+```bash
+# when image is updated
+docker pull kenali/datav-quick-start
+docker stop datav-quick-start
+docker rm datav-quick-start
+# docker run again
+```
+
 ## Reference
 
 * https://spring.io/guides/gs/rest-service/
