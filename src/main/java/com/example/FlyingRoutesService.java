@@ -65,10 +65,18 @@ class FlyingRoutesService {
     }
 
     List<RouteData> saveFlyingRoutes(String routeCsv, String mode) {
-        LOGGER.info("saveFlyingRoutes... " + mode);
+        return saveFlyingRoutes(routeCsv, mode, null);
+    }
+
+    List<RouteData> saveFlyingRoutes(String routeCsv, String mode, Integer expireMinutes) {
+        LOGGER.info("saveFlyingRoutes " + mode + " expires in " + expireMinutes);
 
         if (mode != null && !mode.equals("append")) {
             routes.clear();
+        }
+
+        if (expireMinutes != null) {
+            this.expireMinutes = expireMinutes;
         }
 
         for (String row: routeCsv.split("[\r\n]+")) {

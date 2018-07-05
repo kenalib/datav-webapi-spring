@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @RestController
@@ -24,8 +26,9 @@ public class FlyingRoutesController {
     @PostMapping("/japan")
     List<RouteData> postJapan(
             @RequestParam(value="route-csv") String routeCsv,
-            @RequestParam(value="mode") String mode) {
-        return service.saveFlyingRoutes(routeCsv, mode);
+            @RequestParam(value="mode") String mode,
+            @RequestParam(value = "expire_minutes", required = false) Integer expireMinutes) {
+        return service.saveFlyingRoutes(routeCsv, mode, expireMinutes);
     }
 
 }

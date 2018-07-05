@@ -15,11 +15,11 @@ class RouteData {
         timeStump = LocalDateTime.now();
     }
 
-    String getFrom() {
+    public String getFrom() {
         return from;
     }
 
-    String getTo() {
+    public String getTo() {
         return to;
     }
 
