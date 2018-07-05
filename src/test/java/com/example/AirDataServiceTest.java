@@ -29,7 +29,6 @@ public class AirDataServiceTest extends TestCase {
     @Test
     public void init() {
         assertNotNull(service);
-        service.init();
 
         assertEquals(1497, service.getSites().size());
         assertEquals(1482, service.getLocations().size());

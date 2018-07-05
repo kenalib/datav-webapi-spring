@@ -19,10 +19,10 @@ import java.util.List;
 class FlyingRoutesService {
     private static final Logger LOGGER = LoggerFactory.getLogger(FlyingRoutesService.class);
 
-    @Value("${settings.expireminutes}")
-    private int expireminutes;
-    @Value("${settings.checkminutes}")
-    private int checkminutes;
+    @Value("${settings.expire_minutes}")
+    private int expireMinutes;
+    @Value("${settings.check_duration}")
+    private int checkDuration;
 
     @Autowired
     private ResourceLoader resourceLoader;
@@ -49,7 +49,7 @@ class FlyingRoutesService {
     List<RouteData> findFlyingRoutes() {
         LocalDateTime now = LocalDateTime.now();
 
-        if (ChronoUnit.MINUTES.between(lastCheckTime, now) > checkminutes) {
+        if (ChronoUnit.MINUTES.between(lastCheckTime, now) > checkDuration) {
             expireRoutes();
         }
 
@@ -57,9 +57,9 @@ class FlyingRoutesService {
     }
 
     private void expireRoutes() {
-        LOGGER.info("expireRoutes... if older than " + expireminutes + " minutes");
+        LOGGER.info("expireRoutes... if older than " + expireMinutes + " minutes");
 
-        routes.removeIf(route -> route.isExpired(expireminutes));
+        routes.removeIf(route -> route.isExpired(expireMinutes));
 
         lastCheckTime = LocalDateTime.now();
     }

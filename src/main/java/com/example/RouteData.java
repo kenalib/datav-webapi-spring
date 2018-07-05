@@ -3,7 +3,7 @@ package com.example;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class RouteData {
+class RouteData {
 
     private String from;
     private String to;
@@ -15,11 +15,11 @@ public class RouteData {
         timeStump = LocalDateTime.now();
     }
 
-    public String getFrom() {
+    String getFrom() {
         return from;
     }
 
-    public String getTo() {
+    String getTo() {
         return to;
     }
 

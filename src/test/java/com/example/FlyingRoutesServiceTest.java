@@ -16,48 +16,49 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FlyingRoutesServiceTest extends TestCase {
+    private static String tokyo = "139.69167,35.68944";
+    private static String osaka = "135.52,34.68639";
+    private static String fukuoka = "130.41806,33.60639";
 
     @Autowired
-    FlyingRoutesService service;
+    private FlyingRoutesService service;
 
     @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
-
-    @Test
-    public void init() {
+    public void setUp() {
         assertNotNull(service);
-        service.init();
 
         assertEquals(160, service.getCities().size());
         assertEquals(35.68944F, service.getCities().get("東京").getLat());
         assertEquals(139.69167F, service.getCities().get("東京").getLng());
+
+        service.saveFlyingRoutes("東京,大阪", "flush");
+        service.saveFlyingRoutes("東京,福岡", "append");
+    }
+
+    @After
+    public void tearDown() {
     }
 
     @Test
     public void findFlyingRoutes() {
-        service.saveFlyingRoutes("東京,大阪", "flush");
+        List<RouteData> routes = service.findFlyingRoutes();
+
+        assertEquals(2, routes.size());
+        assertEquals(tokyo, routes.get(0).getFrom());
+        assertEquals(osaka, routes.get(0).getTo());
+        assertEquals(tokyo, routes.get(1).getFrom());
+        assertEquals(fukuoka, routes.get(1).getTo());
+    }
+
+    @Test
+    public void flushFlyingRoutes() {
+        service.saveFlyingRoutes("東京,福岡", "flush");
 
         List<RouteData> routes = service.findFlyingRoutes();
 
         assertEquals(1, routes.size());
-        assertEquals("139.69167,35.68944", routes.get(0).getFrom());
-        assertEquals("135.52,34.68639", routes.get(0).getTo());
-    }
-
-    @Test
-    public void saveFlyingRoutes() {
-        service.saveFlyingRoutes("東京,大阪", "flush");
-        service.saveFlyingRoutes("東京,福岡", "append");
-
-        List<RouteData> routes = service.findFlyingRoutes();
-
-        assertEquals(2, routes.size());
-        assertEquals("139.69167,35.68944", routes.get(1).getFrom());
-        assertEquals("130.41806,33.60639", routes.get(1).getTo());
+        assertNotEquals(osaka, routes.get(0).getTo());
+        assertEquals(tokyo, routes.get(0).getFrom());
+        assertEquals(fukuoka, routes.get(0).getTo());
     }
 }
