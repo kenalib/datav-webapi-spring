@@ -34,10 +34,18 @@ class FlyingRoutesService {
     @PostConstruct
     void init() {
         LOGGER.info("Initializing FlyingRoutesService...");
+        String filename;
+        Resource resource;
 
-        String filename = "classpath:location/japan-cities.csv";
-        Resource resource = resourceLoader.getResource(filename);
-        JapanCitiesParser parser = new JapanCitiesParser(resource);
+        JapanCitiesParser parser = new JapanCitiesParser();
+
+        filename = "classpath:location/tokyo.csv";
+        resource = resourceLoader.getResource(filename);
+        parser.parseCities(resource);
+
+        filename = "classpath:location/japan-cities.csv";
+        resource = resourceLoader.getResource(filename);
+        parser.parseCities(resource);
 
         cities = parser.getCities();
     }

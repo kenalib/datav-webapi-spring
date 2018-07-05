@@ -32,3 +32,4 @@ Frying Routes Generator
 
 * https://www.benricho.org/chimei/latlng_data.html
 * http://www.gsi.go.jp/KOKUJYOHO/center.htm
+* http://www.eurus.dti.ne.jp/~yoneyama/Excel/waza/kakudo.html

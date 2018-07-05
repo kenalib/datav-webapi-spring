@@ -12,15 +12,14 @@ class JapanCitiesParser {
 
     private HashMap<String, Location> cities = new HashMap<>();
 
-    JapanCitiesParser(Resource resource) {
-        parseCities(resource);
+    JapanCitiesParser() {
     }
 
     HashMap<String, Location> getCities() {
         return cities;
     }
 
-    private void parseCities(Resource resource) {
+    void parseCities(Resource resource) {
         try {
             Reader reader = new InputStreamReader(resource.getInputStream());
             BufferedReader br = new BufferedReader(reader);
@@ -38,10 +37,17 @@ class JapanCitiesParser {
                 String pref = col[1];
                 String city = col[2];
 
+                city = city.replaceFirst("^.+郡", "");
+                city = city.replaceFirst("^.+支庁", "");
+
                 cities.put(pref, location);
                 cities.put(city, location);
-                cities.put(pref.substring(0, pref.length()-1), location);
-                cities.put(city.substring(0, city.length()-1), location);
+
+                String prefNameOnly = pref.substring(0, pref.length()-1);
+                String cityNameOnly = city.substring(0, city.length()-1);
+
+                cities.put(prefNameOnly, location);
+                cities.put(cityNameOnly, location);
             }
         } catch (IOException e) {
             e.printStackTrace();
