@@ -8,7 +8,7 @@
 
 <h1>Frying Routes Generator</h1>
 
-Demo app to generate DataV Flying Routes JSON data.
+DataV の Flying Routes 地図に対応した JSON を出力するデモアプリです。
 
 
 <h2>STEP1: データ登録</h2>
@@ -18,6 +18,7 @@ Demo app to generate DataV Flying Routes JSON data.
 <textarea name="route-csv" cols="30" rows="10">
 東京,大阪
 東京,福岡
+中央区,品川区
 </textarea>
 
     <div>
@@ -39,15 +40,16 @@ Demo app to generate DataV Flying Routes JSON data.
 <a href="/flying-routes/japan">GET JSON data</a>
 
 
-<h3>Usage</h3>
+<h3>使い方</h3>
 
-Put city names in CSV format and Submit.<br>
-(Japanese prefectures and major cities only.)
+コンマ区切りで都市名を入力し、Submit を押す。<br>
+都道府県名、県庁所在地都市名、東京都内の市区町村名に対応。<br>
+(「県」「市」「区」等、最後の１文字は省略可。)
 
 <pre style="border: solid 1px lightgray; width:300px;">
-StartCityName,EndCityName
-StartCityName,EndCityName
-StartCityName,EndCityName
+出発地名,到着地名
+出発地名,到着地名
+出発地名,到着地名
 ...
 </pre>
 

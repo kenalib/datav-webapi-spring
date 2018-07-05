@@ -27,7 +27,7 @@ public class FlyingRoutesServiceTest extends TestCase {
     public void setUp() {
         assertNotNull(service);
 
-        assertEquals(160, service.getCities().size());
+        assertEquals(282, service.getCities().size());
         assertEquals(35.68944F, service.getCities().get("東京").getLat());
         assertEquals(139.69167F, service.getCities().get("東京").getLng());
 
