@@ -2,57 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
     <title>Frying Routes Generator</title>
 </head>
 <body>
 
-<h1>Frying Routes Generator</h1>
+<div class="container">
 
-DataV の Flying Routes 地図に対応した JSON を出力するデモアプリです。
+    <h1>Frying Routes Generator</h1>
 
+    <p class="lead">
+        DataV の Flying Routes 地図に対応した JSON を出力するサンプルアプリです。
+    </p>
 
-<h2>STEP1: データ登録</h2>
+    <hr>
 
-<form method="post" action="/flying-routes/japan">
+    <h2>STEP1: データ登録</h2>
 
-<textarea name="route-csv" cols="30" rows="10">
+    <form method="post" action="/flying-routes/japan">
+
+        <div class="form-group">
+            <label for="route-csv">"出発地名,到着地名"を入力</label>
+
+            <textarea name="route-csv" id="route-csv" rows="10" class="form-control">
 東京,大阪
 東京,福岡
 中央区,品川区
 </textarea>
 
-    <div>
-        <input type="radio" name="mode" value="flush" checked>新規保存
-        <input type="radio" name="mode" value="append">追記
-    </div>
+        </div>
 
-    <div>
-        データ有効期間: <input type="text" name="expire_minutes" value="5" size="8"> 分間
-    </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="mode" id="mode1" value="flush" checked>
+            <label class="form-check-label" for="mode1">
+                新規保存
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="mode" id="mode2" value="append">
+            <label class="form-check-label" for="mode2">
+                追記
+            </label>
+        </div>
 
-    <input type="submit">
+        <div class="form-group row">
+            <label for="expire_minutes" class="col-sm-2 col-form-label">
+                データ有効期間(分)
+            </label>
+            <div class="col-sm-2">
+                <input type="text" name="expire_minutes" id="expire_minutes" class="form-control" value="5">
+            </div>
+        </div>
 
-</form>
+        <input type="submit" class="btn btn-primary">
 
+    </form>
 
-<h2>STEP2: データ取得</h2>
+    <hr>
 
-<a href="/flying-routes/japan">GET JSON data</a>
+    <h2>STEP2: データ取得</h2>
 
+    <a href="/flying-routes/japan" target="_blank">GET JSON data</a>
 
-<h3>使い方</h3>
+    <hr>
 
-コンマ区切りで都市名を入力し、Submit を押す。<br>
-都道府県名、県庁所在地都市名、東京都内の市区町村名に対応。<br>
-(「県」「市」「区」等、最後の１文字は省略可。)
+    <h3>使い方</h3>
 
-<pre style="border: solid 1px lightgray; width:300px;">
+    コンマ区切りで都市名を入力し、Submit を押す。<br>
+    都道府県名、県庁所在地都市名、東京都内の市区町村名に対応。<br>
+    (「県」「市」「区」等、最後の１文字は省略可。)
+
+    <pre style="border: solid 1px lightgray; width:300px;">
 出発地名,到着地名
 出発地名,到着地名
 出発地名,到着地名
 ...
 </pre>
 
+</div>
 
 </body>
 </html>
